@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             //retrieve JSON data from REST service into StringBuffer
             StringBuffer buffer = new StringBuffer();
-            String url = "TBD"; // Brett - SET UP REST SERVICE AND PUT URL HERE
+            String url = "http://localhost:8081/rest/getpackages"; // Brett - REST service not running at the moment
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
