@@ -2,9 +2,13 @@ package team4.android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -13,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,15 +26,44 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     ListView lvPackages;
     RequestQueue requestQueue;
+    Button btnAdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        requestQueue = Volley.newRequestQueue(this);
+        lvPackages = findViewById(R.id.lvPackages);
+
+        btnAdd = findViewById(R.id.btnAdd);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        lvPackages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Package pkg = (Package) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("package", pkg);
+                startActivity(intent);
+            }
+        });
+
+        Executors.newSingleThreadExecutor().execute(new GetPackages());
     }
+
     class GetPackages implements Runnable {
         @Override
         public void run() {
@@ -58,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                                     endDate,
                                     obj.getString("pkgDesc"),
                                     obj.getDouble("pkgBasePrice"),
-                                    obj.getDouble("pkgBasePrice")
+                                    obj.getDouble("pkgAgencyCommission")
                             );
                             adapter.add(pkg);
                         }

@@ -1,5 +1,6 @@
 package team4.android;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -24,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AddActivity extends AppCompatActivity {
     Button btnSaveAdd;
@@ -47,6 +50,7 @@ public class AddActivity extends AppCompatActivity {
         etPkgAgencyCommissionAdd = findViewById(R.id.etPkgAgencyCommissionAdd);
 
         btnSaveAdd.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
@@ -54,10 +58,13 @@ public class AddActivity extends AppCompatActivity {
                 try {
                     startDate = (Date) df.parse(etPkgStartDateAdd.getText().toString());
                     endDate = (Date) df.parse(etPkgEndDateAdd.getText().toString());
+
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                java.lang.Package pkg = new java.lang.Package(0,
+
+                Package pkg = new Package(ThreadLocalRandom.current().nextInt(),
                         etPkgNameAdd.getText().toString(),
                         startDate,
                         endDate,
@@ -71,9 +78,9 @@ public class AddActivity extends AppCompatActivity {
     }
 
     class PutPackage implements Runnable {
-        private java.lang.Package pkg;
+        private Package pkg;
 
-        public PutPackage(java.lang.Package pkg) {
+        public PutPackage(Package pkg) {
             this.pkg = pkg;
         }
 
@@ -85,8 +92,8 @@ public class AddActivity extends AppCompatActivity {
             SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy");
             String startDate = df.format(pkg.getPkgStartDate());
             String endDate = df.format(pkg.getPkgEndDate());
-           try {
-                obj.put("packageId", 0);
+            try {
+                obj.put("packageId", pkg.getPackageId());
                 obj.put("pkgName", pkg.getPkgName());
                 obj.put("pkgStartDate", startDate);
                 obj.put("pkgEndDate", endDate);
@@ -127,4 +134,6 @@ public class AddActivity extends AppCompatActivity {
             requestQueue.add(jsonObjectRequest);
         }
     }
+
+
 }

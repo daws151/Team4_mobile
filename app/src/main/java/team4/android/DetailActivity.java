@@ -32,12 +32,12 @@ public class DetailActivity extends AppCompatActivity {
     EditText etPackageId, etPkgName, etPkgStartDate, etPkgEndDate,
             etPkgDesc, etPkgBasePrice, etPkgAgencyCommission;
     RequestQueue requestQueue;
-    java.lang.Package pkg;
+    Package pkg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+         setContentView(R.layout.activity_detail);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         etPkgAgencyCommission = findViewById(R.id.etPkgAgencyCommission);
 
         Intent intent = getIntent();
-        pkg = (java.lang.Package) intent.getSerializableExtra("package");
+        pkg = (Package) intent.getSerializableExtra("package");
 
         Executors.newSingleThreadExecutor().execute(new GetPackage(pkg.getPackageId()));
 
@@ -67,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                java.lang.Package pkg = new java.lang.Package(Integer.parseInt(etPackageId.getText().toString()),
+                Package pkg = new Package(Integer.parseInt(etPackageId.getText().toString()),
                         etPkgName.getText().toString(),
                         startDate,
                         endDate,
@@ -143,9 +143,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     class PostPackage implements Runnable {
-        private java.lang.Package pkg;
+        private Package pkg;
 
-        public PostPackage(java.lang.Package pkg) {
+        public PostPackage(Package pkg) {
             this.pkg = pkg;
         }
 
@@ -168,6 +168,7 @@ public class DetailActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -189,12 +190,12 @@ public class DetailActivity extends AppCompatActivity {
                         }
                     },
                     new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("harv", "error=" + error);
-                    VolleyLog.wtf(error.getMessage(), "utf-8");
-                }
-            });
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("harv", "error=" + error);
+                            VolleyLog.wtf(error.getMessage(), "utf-8");
+                        }
+                    });
 
             requestQueue.add(jsonObjectRequest);
         }
