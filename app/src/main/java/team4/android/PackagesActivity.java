@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Executors;
 
-public class MainActivity extends AppCompatActivity {
+public class PackagesActivity extends AppCompatActivity {
     ListView lvPackages;
     RequestQueue requestQueue;
     Button btnAdd;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_packages);
 
         requestQueue = Volley.newRequestQueue(this);
         lvPackages = findViewById(R.id.lvPackages);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                Intent intent = new Intent(PackagesActivity.this, AddActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Package pkg = (Package) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(PackagesActivity.this, DetailActivity.class);
                 intent.putExtra("package", pkg);
                 startActivity(intent);
             }
