@@ -98,7 +98,8 @@ public class DetailActivity extends AppCompatActivity {
         public void run() {
             //retrieve JSON data from REST service into StringBuffer
             StringBuffer buffer = new StringBuffer();
-            String url = "http://192.168.0.27:8080/Winter2022JSPDay7REST-1.0-SNAPSHOT/api/package/getpackage/" + packageId;
+//            String url = "http://192.168.0.27:8080/Winter2022JSPDay7REST-1.0-SNAPSHOT/api/package/getpackage/" + packageId;
+            String url = "http://localhost:8081/team4_server_war_exploded/package/getpackages" + packageId;
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
