@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         btnPackages.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            startActivity(new Intent(HomeActivity.this, BookPackageActivity.class));
+            startActivity(new Intent(HomeActivity.this, PackagesActivity.class));
             }
         });
 

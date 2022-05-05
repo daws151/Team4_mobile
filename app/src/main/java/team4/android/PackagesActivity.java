@@ -69,7 +69,7 @@ public class PackagesActivity extends AppCompatActivity {
         public void run() {
             //retrieve JSON data from REST service into StringBuffer
             StringBuffer buffer = new StringBuffer();
-            String url = "http://localhost:8081/rest/getpackages"; // Brett - REST service not running at the moment
+            String url = "http://192.168.0.10:8081/team4_server_war_exploded/package/getpackages"; // Brett - REST service not running at the moment
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -82,11 +82,11 @@ public class PackagesActivity extends AppCompatActivity {
                         for (int i=0; i<jsonArray.length(); i++)
                         {
                             JSONObject obj = jsonArray.getJSONObject(i);
-                            SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy");
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                             Date startDate = (Date) df.parse(obj.getString("pkgStartDate"));
                             Log.d("brett", startDate.toString());
                             Date endDate = (Date) df.parse(obj.getString("pkgEndDate"));
-                            Package pkg = new Package(obj.getInt("packageId"),
+                            Package pkg = new Package(obj.getInt("PackageId"),
                                     obj.getString("pkgName"),
                                     startDate,
                                     endDate,

@@ -53,7 +53,7 @@ public class BookPackageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Package pkg = (Package) lvPackages.getAdapter().getItem(position);
-                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PackagesActivity.class);
                 intent.putExtra("package", pkg);
                 startActivity(intent);
             }
