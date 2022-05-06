@@ -29,14 +29,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.Executors;
 
-
 public class BookPackageActivity extends AppCompatActivity {
 
-    ListView lvPackages;
     RequestQueue requestQueue;
+    ListView lvPackages;
     Button btnHome;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +44,15 @@ public class BookPackageActivity extends AppCompatActivity {
         lvPackages = findViewById(R.id.lvPackages);
         btnHome = findViewById(R.id.btnHome);
 
-        Executors.newSingleThreadExecutor().execute(new GetPackages());
-
         lvPackages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Package pkg = (Package) lvPackages.getAdapter().getItem(position);
-                Intent intent = new Intent(getApplicationContext(), PackagesActivity.class);
-                intent.putExtra("package", pkg);
+
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), ConfirmBookingActivity.class);
+                intent.putExtra("package", (Package)lvPackages.getAdapter().getItem(i));
                 startActivity(intent);
             }
+
         });
 
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -66,9 +62,7 @@ public class BookPackageActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        Executors.newSingleThreadExecutor().execute(new GetPackages());
     }
 
     private class GetPackages implements Runnable {
@@ -76,23 +70,22 @@ public class BookPackageActivity extends AppCompatActivity {
         @Override
         public void run() {
             StringBuffer buffer = new StringBuffer();
-            String url = "http://localhost:8081/team4_server_war_exploded/package/getpackages";
+            String url = "http://192.168.1.89:8081/team4_server_war_exploded/package/getpackages";
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     VolleyLog.wtf(response, "utf-8");
-
 
                     ArrayAdapter<Package> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject obj = jsonArray.getJSONObject(i);
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                             Date startDate = (Date) dateFormat.parse(obj.getString("pkgStartDate"));
                             Log.d("William", startDate.toString());
                             Date endDate = (Date) dateFormat.parse(obj.getString("pkgEndDate"));
-                            Package pkg = new Package(obj.getInt("packageId"),
+                            Package pkg = new Package(obj.getInt("PackageId"),
                                     obj.getString("pkgName"),
                                     startDate,
                                     endDate,
@@ -122,8 +115,6 @@ public class BookPackageActivity extends AppCompatActivity {
             });
 
             requestQueue.add(stringRequest);
-
-
 
         }
     }

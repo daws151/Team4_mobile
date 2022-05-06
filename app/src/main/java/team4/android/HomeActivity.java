@@ -6,23 +6,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
+
+    Button btnPackages, btnContact, btnBookings, btnLogout;
+    TextView tvWelcome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-    Button btnPackages = findViewById(R.id.btnPackages);
-    Button btnContact = findViewById(R.id.btnContact);
-    Button btnBookings = findViewById(R.id.btnBookings);
+        tvWelcome = findViewById(R.id.tvEmpWelcome);
+
+        btnPackages = findViewById(R.id.btnPackages);
+        btnContact = findViewById(R.id.btnContact);
+        btnBookings = findViewById(R.id.btnBookings);
+        btnLogout = findViewById(R.id.btnLogout);
+
+        String username = "";                                         // If possible, gather the Customer's first name to fill this string
+
+        tvWelcome.setText("Welcome" + username + "!");
+
 
 
         btnPackages.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            startActivity(new Intent(HomeActivity.this, PackagesActivity.class));
+            startActivity(new Intent(HomeActivity.this, BookPackageActivity.class));
             }
         });
 
@@ -39,5 +52,14 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, BookingsActivity.class));
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+            }
+        });
+
+
     }
 }

@@ -12,21 +12,23 @@ import team4.android.ui.login.LoginActivity;
 public class WelcomeActivity extends AppCompatActivity {
 
 
+    Button btnLogin, btnEmployees, btnHOMETEMP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
-        Button btnEmployees = findViewById(R.id.btnEmployees);
-        Button btnHOMETEMP = findViewById(R.id.btnHOMETEMP);
+//        btnLogin = findViewById(R.id.btnLogin);
+        btnEmployees = findViewById(R.id.btnEmployees);
+        btnHOMETEMP = findViewById(R.id.btnHOMETEMP);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-            }
-        });
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+//            }
+//        });
 
         btnEmployees.setOnClickListener(new View.OnClickListener() {
             @Override

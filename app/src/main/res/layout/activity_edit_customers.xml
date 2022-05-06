@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".EditCustomersActivity">
 
+    <ListView
+        android:id="@+id/lvAgents"
+        android:layout_width="374dp"
+        android:layout_height="603dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEmployeeHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
     <Button
         android:id="@+id/btnEmployeeHome"
         android:layout_width="224dp"
@@ -17,19 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="323dp"
-        android:layout_height="248dp"
-        android:text="PLACEHOLDER: Edit existing CUSTOMERS, selection will open popup with text fields"
-        android:textColor="#2439AE"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
 
     <TextView
         android:id="@+id/textView17"

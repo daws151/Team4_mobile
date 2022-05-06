@@ -6,11 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".EmployeeHomeActivity">
 
+    <TextView
+        android:id="@+id/tvEmpWelcome"
+        android:layout_width="341dp"
+        android:layout_height="55dp"
+        android:textAlignment="center"
+        android:textColor="#2439AE"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
     <Button
         android:id="@+id/btnEditPackages"
         android:layout_width="250dp"
         android:layout_height="72dp"
         android:text="Edit Packages"
+        android:textColor="#EDE7F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -23,6 +38,7 @@
         android:layout_width="250dp"
         android:layout_height="72dp"
         android:text="Edit Bookings"
+        android:textColor="#EDE7F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,27 +57,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.814" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="341dp"
-        android:layout_height="55dp"
-        android:text="Welcome {Username}"
-        android:textAlignment="center"
-        android:textColor="#2439AE"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
-
     <Button
-        android:id="@+id/btnLogout2"
+        android:id="@+id/btnEmpLogout"
         android:layout_width="160dp"
         android:layout_height="61dp"
         android:layout_marginBottom="36dp"
-        android:text="Logout (inactive)"
+        android:text="Logout"
+        android:textColor="#EDE7F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -69,17 +71,4 @@
         app:layout_constraintTop_toBottomOf="@+id/btnContact"
         app:layout_constraintVertical_bias="0.659" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="316dp"
-        android:layout_height="156dp"
-        android:text="PLACEHOLDER: Space for additional content"
-        android:textColor="#2439AE"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272" />
 </androidx.constraintlayout.widget.ConstraintLayout>

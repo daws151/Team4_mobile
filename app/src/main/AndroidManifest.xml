@@ -3,14 +3,28 @@
     package="team4.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Travel Experts"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TravelExperts_mobile">
+        android:theme="@style/Theme.TravelExperts_mobile"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".CustomerDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgentDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmBookingActivity"
+            android:exported="false" />
         <activity
             android:name=".EditCustomersActivity"
             android:exported="false" />
@@ -22,10 +36,9 @@
             android:exported="false" />
         <activity
             android:name=".EmployeeHomeActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Employee.EmployeeHomeActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Employee.EmployeeHomeActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".BookingsActivity"
             android:exported="false" />

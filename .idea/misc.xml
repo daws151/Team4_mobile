@@ -4,12 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_add.xml" value="0.25" />
-        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_book_package.xml" value="0.25" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_agent_details.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_book_package.xml" value="0.33" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_booking_confirmation.xml" value="0.25" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_bookings.xml" value="0.25" />
-        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_contact.xml" value="0.25" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_confirm_booking.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_contact.xml" value="0.33" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_contact_agent.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_customer_details.xml" value="0.20906370243693886" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_edit_bookings.xml" value="0.221889696451475" />
-        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_edit_customers.xml" value="0.221889696451475" />
+        <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_edit_customers.xml" value="0.33" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_edit_packages.xml" value="0.221889696451475" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_employee.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/Willi/Desktop/Team4_mobile/app/src/main/res/layout/activity_employee_home.xml" value="0.221889696451475" />
