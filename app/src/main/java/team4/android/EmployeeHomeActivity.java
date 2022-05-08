@@ -8,15 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: This is the Home page for employees.
+ ***/
 public class EmployeeHomeActivity extends AppCompatActivity {
 
 
     TextView tvEmpWelcome;
 
-    Button btnEditPackages, btnEditBookings, btnEditCustomers, btnEmpLogout;
+    Button btnEditPackages, btnEditCustomers, btnEmpLogout;
 
-    String username = "";                                         // If possible, gather the Customer's first name to fill this string
+    // This variable was meant to catch user's name from the login which we ended up abandoning due to time.
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +29,17 @@ public class EmployeeHomeActivity extends AppCompatActivity {
 
 
         btnEditPackages = findViewById(R.id.btnEditPackages);
-        btnEditBookings = findViewById(R.id.btnEditBookings);
         btnEditCustomers = findViewById(R.id.btnEditCustomers);
         btnEmpLogout = findViewById(R.id.btnEmpLogout);
         tvEmpWelcome = findViewById(R.id.tvEmpWelcome);
 
+        // Header text, when set up will display the user's name
         tvEmpWelcome.setText("Welcome" + username + "!");
-
-
 
         btnEditPackages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(EmployeeHomeActivity.this, EditPackagesActivity.class));
-            }
-        });
-
-        btnEditBookings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EmployeeHomeActivity.this, EditBookingsActivity.class));
             }
         });
 

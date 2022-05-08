@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: Home page for Customers. Provides access to all other areas for customers.
+ ***/
 public class HomeActivity extends AppCompatActivity {
 
     Button btnPackages, btnContact, btnBookings, btnLogout;
     TextView tvWelcome;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         btnBookings = findViewById(R.id.btnBookings);
         btnLogout = findViewById(R.id.btnLogout);
 
-        String username = "";                                         // If possible, gather the Customer's first name to fill this string
-
+        String username = "";                    // This was meant to gather user information from login activity and display it in the header which was abandoned due to time constraint.
         tvWelcome.setText("Welcome" + username + "!");
-
-
 
         btnPackages.setOnClickListener(new View.OnClickListener() {
         @Override

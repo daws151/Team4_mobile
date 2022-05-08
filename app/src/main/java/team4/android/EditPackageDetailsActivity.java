@@ -1,6 +1,5 @@
 package team4.android;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,42 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 /*** Author: William Rust
  *   Date: May 07, 2022
- *   Comments: Shows the selected package in further details. Does not have database modification functions implemented.
+ *   Comments: This page displays the chosen Package in greater detail. Database editing functions not implemented.
  ***/
-public class ConfirmBookingActivity extends AppCompatActivity {
+public class EditPackageDetailsActivity extends AppCompatActivity {
 
-    EditText etPackageName, etPackageStartDate, etPackageEndDate, etPackagePrice;
-    Button btnBack, btnBookPackage;
-    EditText mlPackageDesc;
+
+    EditText etPackageName, etPackageStartDate, etPackageEndDate, mlPackageDesc, etPackagePrice, etPackageCommission;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_booking);
-
-        btnBack = findViewById(R.id.btnBack);
-        btnBookPackage = findViewById(R.id.btnBookPackage);
+        setContentView(R.layout.activity_edit_package_details);
 
         etPackageName = findViewById(R.id.etPackageName);
-        etPackageName.setEnabled(false);
-
         etPackageStartDate = findViewById(R.id.etPackageStartDate);
-        etPackageStartDate.setEnabled(false);
-
         etPackageEndDate = findViewById(R.id.etPackageEndDate);
-        etPackageEndDate.setEnabled(false);
-
         mlPackageDesc = findViewById(R.id.mlPackageDesc);
-        mlPackageDesc.setEnabled(false);
-
         etPackagePrice = findViewById(R.id.etPackagePrice);
-        etPackagePrice.setEnabled(false);
+        etPackageCommission = findViewById(R.id.etPackageCommission);
+
+        btnBack = findViewById(R.id.btnBack);
 
         Intent intent = getIntent();
         Package pkg = (Package) intent.getSerializableExtra("package");
@@ -53,19 +41,17 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         etPackageEndDate.setText(new SimpleDateFormat("yyyy-MMM-dd").format(pkg.getPkgEndDate()));
         mlPackageDesc.setText(pkg.getPkgDesc());
         etPackagePrice.setText("$" + pkg.getPkgBasePrice());
+        etPackageCommission.setText("$" + pkg.getPkgAgencyCommission());
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { finish(); }
-        });
-
-        btnBookPackage.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
-                startActivity(new Intent(ConfirmBookingActivity.this, BookingConfirmationActivity.class));
+                finish();
             }
         });
+
+
 
 
     }

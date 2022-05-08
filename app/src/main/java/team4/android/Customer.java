@@ -1,7 +1,10 @@
 package team4.android;
 
 import java.io.Serializable;
-
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: Customer class as used by the database.
+ ***/
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,13 @@
 package team4.android;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.Serializable;
 import java.util.Date;
-
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: Package class to mimic associated table on database.
+ ***/
 public class Package implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +34,9 @@ public class Package implements Serializable {
 		this.pkgStartDate = pkgStartDate;
 		this.pkgEndDate = pkgEndDate;
 		this.pkgDesc = pkgDesc;
+		if (pkgDesc == null){
+			this.pkgDesc = "";
+		}
 		this.pkgBasePrice = pkgBasePrice;
 		this.pkgAgencyCommission = pkgAgencyCommission;
 	}

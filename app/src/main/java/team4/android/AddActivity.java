@@ -28,7 +28,16 @@ import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 
+/*** Author:  Harbir Singh, Brett Dawson
+ *   Date: May 07, 2022
+ *   Comments: Didn't use this page, but shows how to add Packages
+ ***/
+
 public class AddActivity extends AppCompatActivity {
+
+        /*** REPLACE WITH IP ADDRESS OF REST SERVICE ***/
+        String ip = "192.168.1.89:8081";
+
     Button btnSaveAdd;
     EditText etPkgNameAdd, etPkgStartDateAdd, etPkgEndDateAdd,
             etPkgDescAdd, etPkgBasePriceAdd, etPkgAgencyCommissionAdd;
@@ -87,7 +96,7 @@ public class AddActivity extends AppCompatActivity {
         @Override
         public void run() {
             //send JSON data to REST service
-            String url = "http://localhost:8081/rest/insertpackage";
+            String url = "http://" + ip + "/rest/insertpackage";
             JSONObject obj = new JSONObject();
             SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy");
             String startDate = df.format(pkg.getPkgStartDate());

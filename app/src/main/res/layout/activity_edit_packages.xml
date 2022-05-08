@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".EditPackagesActivity">
 
+    <ListView
+        android:id="@+id/lvPackages"
+        android:layout_width="378dp"
+        android:layout_height="515dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.739" />
+
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tvTextView12"
         android:layout_width="341dp"
         android:layout_height="55dp"
-        android:text="Edit Packages"
+        android:text="Package Manager"
         android:textAlignment="center"
         android:textColor="#2439AE"
         android:textSize="34sp"
@@ -19,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <Button
         android:id="@+id/btnEmployeeHome"
@@ -33,16 +44,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="323dp"
-        android:layout_height="248dp"
-        android:text="PLACEHOLDER: Edit existing PACKAGES, selection will open popup with text fields"
-        android:textColor="#2439AE"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286" />
 </androidx.constraintlayout.widget.ConstraintLayout>

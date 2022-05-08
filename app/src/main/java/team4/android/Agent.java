@@ -2,6 +2,11 @@ package team4.android;
 
 import java.io.Serializable;
 
+/*** Author: William Rust, Harbir Singh, Brett Dawson
+ *   Date: May 07, 2022
+ *   Comments: Agent class from the Travel Experts database. Has columns added for User ID and Password.
+ ****/
+
 public class Agent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -10,7 +15,7 @@ public class Agent implements Serializable {
 
     private String agtFirstName;
 
-//    private String agtMiddleInitial;
+    private String agtMiddleInitial;
 
     private String agtLastName;
 
@@ -22,22 +27,22 @@ public class Agent implements Serializable {
 
     private int agencyId;
 
+    private String agtUserId;
 
-//    public Agent(int agentId, String agtFirstName, String agtMiddleInitial String agtLastName, String agtBusPhone, String agtEmail, String agtPosition, int agencyId) {
+    private String agtPassword;
 
-    public Agent(int agentId, String agtFirstName, String agtLastName, String agtBusPhone, String agtEmail, String agtPosition, int agencyId) {
+    public Agent(int agentId, String agtFirstName, String agtMiddleInitial, String agtLastName, String agtBusPhone, String agtEmail, String agtPosition, int agencyId, String agtUserId, String agtPassword) {
         AgentId = agentId;
         this.agtFirstName = agtFirstName;
-//        this.agtMiddleInitial = agtMiddleInitial;
+        this.agtMiddleInitial = agtMiddleInitial;
         this.agtLastName = agtLastName;
         this.agtBusPhone = agtBusPhone;
         this.agtEmail = agtEmail;
         this.agtPosition = agtPosition;
         this.agencyId = agencyId;
-
+        this.agtUserId = agtUserId;
+        this.agtPassword = agtPassword;
     }
-
-
 
     public int getAgentId() {
         return AgentId;
@@ -55,13 +60,13 @@ public class Agent implements Serializable {
         this.agtFirstName = agtFirstName;
     }
 
-//    public String getAgtMiddleInitial() {
-//        return agtMiddleInitial;
-//    }
-//
-//    public void setAgtMiddleInitial(String agtMiddleInitial) {
-//        this.agtMiddleInitial = agtMiddleInitial;
-//    }
+    public String getAgtMiddleInitial() {
+        return agtMiddleInitial;
+    }
+
+    public void setAgtMiddleInitial(String agtMiddleInitial) {
+        this.agtMiddleInitial = agtMiddleInitial;
+    }
 
     public String getAgtLastName() {
         return agtLastName;
@@ -103,6 +108,21 @@ public class Agent implements Serializable {
         this.agencyId = agencyId;
     }
 
+    public String getAgtUserId() {
+        return agtUserId;
+    }
+
+    public void setAgtUserId(String agtUserId) {
+        this.agtUserId = agtUserId;
+    }
+
+    public String getAgtPassword() {
+        return agtPassword;
+    }
+
+    public void setAgtPassword(String agtPassword) {
+        this.agtPassword = agtPassword;
+    }
 
     @Override
     public String toString() {

@@ -6,4 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".CustomerDetailsActivity">
 
+    <TextView
+        android:id="@+id/tvCustomerName"
+        android:layout_width="386dp"
+        android:layout_height="87dp"
+        android:text="Customer Details"
+        android:textAlignment="center"
+        android:textColor="#2439AE"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="390dp"
+        android:layout_height="444dp"
+        android:layout_marginTop="67dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCustomerName">
+
+        <TextView
+            android:id="@+id/tvCustAddress"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Customer Address"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCustCity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Customer City"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCustPostal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Customer Postal"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCustHomePhone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Home Phone"
+            android:textAlignment="center"
+            android:textColor="@color/primary_blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCustBusPhone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Business Phone"
+            android:textAlignment="center"
+            android:textColor="@color/primary_blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvCustEmail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Email"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCustAgentID"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Agent ID"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953" />
 </androidx.constraintlayout.widget.ConstraintLayout>

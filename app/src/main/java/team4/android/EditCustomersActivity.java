@@ -23,8 +23,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.Executors;
-
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: This page gathers and displays all customers
+ ***/
 public class EditCustomersActivity extends AppCompatActivity {
+
+    /*** REPLACE WITH IP ADDRESS OF REST SERVICE ***/
+    String ip = "192.168.1.89:8081";
 
     RequestQueue requestQueue;
     ListView lvCustomers;
@@ -41,7 +47,6 @@ public class EditCustomersActivity extends AppCompatActivity {
 
         Executors.newSingleThreadExecutor().execute(new EditCustomersActivity.GetCustomers());
 
-
         btnEmployeeHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +62,6 @@ public class EditCustomersActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private class GetCustomers implements Runnable {
@@ -65,7 +69,7 @@ public class EditCustomersActivity extends AppCompatActivity {
         @Override
         public void run() {
             StringBuffer buffer = new StringBuffer();
-            String url = "http://192.168.1.89:8081/team4_server_war_exploded/customer/getcustomers";
+            String url = "http://" + ip + "/team4_server_war_exploded/customer/getcustomers";
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -76,6 +80,19 @@ public class EditCustomersActivity extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject obj = jsonArray.getJSONObject(i);
+
+                            // Variables set to catch possible null values from database
+                            String country = "";
+                            String phone = "";
+                            Integer agent = 0;
+
+
+                            // If statements use specified values from database if they exist. If not, they use the variables above.
+                            if (obj.has("custCountry")){ country = obj.getString("custCountry"); }
+                            if (obj.has("custHomePhone")){ phone = obj.getString("custHomePhone"); }
+                            if (obj.has("agent")){ agent = obj.getInt("agent"); }
+
+                            // customer object builder
                             Customer cust = new Customer(obj.getInt("customerId"),
                                                       obj.getString("custFirstName"),
                                                       obj.getString("custLastName"),
@@ -83,11 +100,11 @@ public class EditCustomersActivity extends AppCompatActivity {
                                                       obj.getString("custCity"),
                                                       obj.getString("custProv"),
                                                       obj.getString("custPostal"),
-                                                      obj.getString("custCountry"),
-                                                      obj.getString("custHomePhone"),
+                                                      country,
+                                                      phone,
                                                       obj.getString("custBusPhone"),
-                                                      obj.getString("custEmail"),
-                                                      obj.getInt("agent")
+                                                      obj.getString("custEmail").trim(),  // trim added to clear excess white space on customer emails
+                                                      agent
                             );
                             adapter.add(cust);
 

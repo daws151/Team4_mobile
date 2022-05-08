@@ -26,7 +26,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Executors;
-
+/*** Author Harbir Singh, Brett Dawson
+ *   Date: May 07, 2022
+ *   Comments: This page not used.
+ ***/
 public class DetailActivity extends AppCompatActivity {
     Button btnUpdate, btnDelete;
     EditText etPackageId, etPkgName, etPkgStartDate, etPkgEndDate,

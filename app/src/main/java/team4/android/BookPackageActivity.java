@@ -28,8 +28,14 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.Executors;
-
+/*** Author: William Rust
+ *   Date: May 07, 2022
+ *   Comments: This page gathers and displays all packages to user.
+ ***/
 public class BookPackageActivity extends AppCompatActivity {
+
+    /*** REPLACE WITH IP ADDRESS OF REST SERVICE ***/
+    String ip = "192.168.1.89:8081";
 
     RequestQueue requestQueue;
     ListView lvPackages;
@@ -44,15 +50,14 @@ public class BookPackageActivity extends AppCompatActivity {
         lvPackages = findViewById(R.id.lvPackages);
         btnHome = findViewById(R.id.btnHome);
 
+        // Redirects when clicking on a package to view it in more detail
         lvPackages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmBookingActivity.class);
                 intent.putExtra("package", (Package)lvPackages.getAdapter().getItem(i));
                 startActivity(intent);
             }
-
         });
 
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +72,12 @@ public class BookPackageActivity extends AppCompatActivity {
 
     private class GetPackages implements Runnable {
 
+
+
         @Override
         public void run() {
             StringBuffer buffer = new StringBuffer();
-            String url = "http://192.168.1.89:8081/team4_server_war_exploded/package/getpackages";
+            String url = "http://" + ip + "/team4_server_war_exploded/package/getpackages";
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -81,17 +88,30 @@ public class BookPackageActivity extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject obj = jsonArray.getJSONObject(i);
+
+                            // Sets the date format for later use
                             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                            Date startDate = (Date) dateFormat.parse(obj.getString("pkgStartDate"));
-                            Log.d("William", startDate.toString());
-                            Date endDate = (Date) dateFormat.parse(obj.getString("pkgEndDate"));
+
+                            // These variables are in place to catch any null values from the database.
+                            Date sDate = dateFormat.parse("1970-01-01");
+                            Date eDate = dateFormat.parse("1970-01-01");
+                            String desc = "N/A";
+                            Double comm = 0.0;
+
+                            // If statements used to gather correct variable value if they exist, otherwise will use the variables above.
+                            if (obj.has("pkgStartDate")) { sDate = dateFormat.parse(obj.getString("pkgStartDate")); }
+                            if (obj.has("pkgEndDate")) { eDate = dateFormat.parse(obj.getString("pkgEndDate")); }
+                            if (obj.has("pkgAgencyCommission")){   comm = obj.getDouble("pkgAgencyCommission"); }
+                            if (obj.has("pkgDesc")) { desc = obj.getString("pkgDesc"); }
+
+                            // Package object builder
                             Package pkg = new Package(obj.getInt("PackageId"),
                                     obj.getString("pkgName"),
-                                    startDate,
-                                    endDate,
-                                    obj.getString("pkgDesc"),
+                                    sDate,
+                                    eDate,
+                                    desc,
                                     obj.getDouble("pkgBasePrice"),
-                                    obj.getDouble("pkgAgencyCommission")
+                                    comm
                             );
                             adapter.add(pkg);
                         }
@@ -113,9 +133,7 @@ public class BookPackageActivity extends AppCompatActivity {
                     VolleyLog.wtf(error.getMessage(), "utf-8");
                 }
             });
-
             requestQueue.add(stringRequest);
-
         }
     }
 }
